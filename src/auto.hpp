@@ -8,6 +8,7 @@ const double matSize = 23.4166;
 
 
 
+
 void movefwd(double mat){
 
     mat = mat*matSize/(circumfrence);
@@ -48,7 +49,6 @@ void turnright(double m){
  * from where it left off.
  */
 void autonomous1() {
-
     right1_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
     right2_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
     left1_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
@@ -76,7 +76,7 @@ void autonomous1() {
 }
 
 void autonomous2(){
-    
+
 
 
 
