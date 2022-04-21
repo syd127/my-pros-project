@@ -47,7 +47,7 @@ void turnright(double m){
  * will be stopped. Re-enabling the robot will restart the task, not re-start it
  * from where it left off.
  */
-void autonomous() {
+void autonomous1() {
 
     right1_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
     right2_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
@@ -73,6 +73,12 @@ void autonomous() {
     pros::delay(3000);
     movefwd(2);
     pros::delay(3000);
+}
+
+void autonomous2(){
+    
+
+
 
 
 

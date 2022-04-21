@@ -105,7 +105,7 @@ void opcontrol() {
 
 //////////////////////////////////////////////////////////////
 			if (master.get_digital(DIGITAL_L2)){
-				claw_mtr.move_absolute(90,100);
+				claw_mtr.move_absolute(30,100);
 			}
 			else if (master.get_digital(DIGITAL_L1)){
 				claw_mtr.move_absolute(175,100);
@@ -133,8 +133,16 @@ void opcontrol() {
 
 
 		if (master.get_digital(DIGITAL_A) && master.get_digital(DIGITAL_B)){
-			autonomous();
+			autonomous1();
 		}
+
+
+
+		if (master.get_digital(DIGITAL_DOWN) && master.get_digital(DIGITAL_LEFT)){
+			autonomous2();
+		}
+
+		
 
 		
 		
