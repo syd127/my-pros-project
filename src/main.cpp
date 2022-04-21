@@ -64,6 +64,8 @@ void competition_initialize() {}
  */
 void opcontrol() {
 	setup();
+	claw_mtr.set_encoder_units(MOTOR_ENCODER_DEGREES);
+	claw_mtr.move_absolute(175,100);
 
 
 	while (true) {
@@ -77,6 +79,8 @@ void opcontrol() {
 		left2_mtr.move_velocity(leftval);
 		right1_mtr.move_velocity(-rightval);
 		right2_mtr.move_velocity(-rightval);
+
+		
 
 		if (master.get_digital(DIGITAL_R1)){
 			if (lift_mtr.get_position()<800){
@@ -99,29 +103,35 @@ void opcontrol() {
 			lift_mtr.move_velocity(0);
 		}
 //////////////////////////////////////////////////////////////
-		if (master.get_digital(DIGITAL_L1)){
-			if (claw_mtr.get_position()<400){
-				claw_mtr.move_velocity(70);
+			if (master.get_digital(DIGITAL_L2)){
+				claw_mtr.move_absolute(90,100);
 			}
-			else{
-				claw_mtr.brake();
+			else if (master.get_digital(DIGITAL_L1)){
+				claw_mtr.move_absolute(175,100);
 			}
-		}
-		else if (master.get_digital(DIGITAL_L2)){
-			if (claw_mtr.get_position()>10){
-				claw_mtr.move_velocity(-50);
-			}
-			else{
-				claw_mtr.brake();
-			}
-		}
-		else{
-			claw_mtr.brake();
-		}
+		// if (master.get_digital(DIGITAL_L1)){
+		// 	if (claw_mtr.get_position()<160){
+		// 		claw_mtr.move_velocity(70);
+		// 	}
+		// 	else{
+		// 		claw_mtr.brake();
+		// 	}
+		// }
+		// else if (master.get_digital(DIGITAL_L2)){
+		// 	if (claw_mtr.get_position()>10){
+		// 		claw_mtr.move_velocity(-50);
+		// 	}
+		// 	else{
+		// 		claw_mtr.brake();
+		// 	}
+		// }
+		// else{
+		// 	claw_mtr.brake();
+		// }
 
 
 
-		if (master.get_digital(DIGITAL_A)){
+		if (master.get_digital(DIGITAL_A) && master.get_digital(DIGITAL_B)){
 			autonomous();
 		}
 

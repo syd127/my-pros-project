@@ -6,7 +6,7 @@
 	pros::Motor right2_mtr(10);
 	pros::Motor left2_mtr(20);
 	pros::Motor lift_mtr(4, pros::E_MOTOR_GEARSET_36, 0, pros::E_MOTOR_ENCODER_DEGREES);
-	pros::Motor claw_mtr(4, pros::E_MOTOR_GEARSET_18, 0, pros::E_MOTOR_ENCODER_DEGREES);
+	pros::Motor claw_mtr(2, pros::E_MOTOR_GEARSET_18, 0, pros::E_MOTOR_ENCODER_DEGREES);
 
 
 void setup(){
