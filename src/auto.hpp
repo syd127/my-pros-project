@@ -14,23 +14,29 @@ void movefwd(double mat){
     mat = mat*(2.0/3);
 
     right1_mtr.move_relative(mat,70);
-    right1_mtr.move_relative(mat,70);
+    right2_mtr.move_relative(mat,70);
     left1_mtr.move_relative(-mat,70);
     left2_mtr.move_relative(-mat,70);
 
 }
 
 
-void turnleft(){
-
-
-    right1_mtr.move_relative(2,70);
-    right1_mtr.move_relative(2,70);
-    left1_mtr.move_relative(2,70);
-    left2_mtr.move_relative(2,70);
-
+void turnleft(double m){
+    right1_mtr.move_relative(m,70);
+    right2_mtr.move_relative(m,70);
+    left1_mtr.move_relative(m,70);
+    left2_mtr.move_relative(m,70);
 }
-/**
+
+
+void turnright(double m){
+    right1_mtr.move_relative(-m,70);
+    right2_mtr.move_relative(-m,70);
+    left1_mtr.move_relative(-m,70);
+    left2_mtr.move_relative(-m,70);
+}
+/**n
+ * 
  * Runs the user autonomous code. This function will be started in its own task
  * with the default priority and stack size whenever the robot is enabled via
  * the Field Management System or the VEX Competition Switch in the autonomous
@@ -47,10 +53,26 @@ void autonomous() {
     right2_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
     left1_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
     left2_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
-    movefwd(1);
+    movefwd(3);// one
+    pros::delay(3000);
+    turnright(0.62);
+    pros::delay(3000);
+    movefwd(1.5);
+    pros::delay(3000);
+    turnright(0.62);
+    pros::delay(3000);
+    movefwd(2);//two
+    pros::delay(3000);
+    movefwd(-0.2);
     pros::delay(1000);
-    turnleft();
-    pros::delay(1000);
+    turnleft(0.62);
+    pros::delay(3000);
+    movefwd(1.5);
+    pros::delay(3000);
+    turnleft(0.62);
+    pros::delay(3000);
+    movefwd(2);
+    pros::delay(3000);
 
 
 
