@@ -10,8 +10,8 @@
 
 
 void setup(){
-	lift_mtr.set_brake_mode(MOTOR_BRAKE_BRAKE);
-	claw_mtr.set_brake_mode(MOTOR_BRAKE_BRAKE);
+	lift_mtr.set_brake_mode(MOTOR_BRAKE_HOLD);
+	claw_mtr.set_brake_mode(MOTOR_BRAKE_HOLD);
 	lift_mtr.tare_position();
 	claw_mtr.tare_position();
 }

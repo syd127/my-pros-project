@@ -1,6 +1,6 @@
 #include "main.h"
 #include "auto.hpp" 
-#include "isetting.hpp"
+
 /**
  * A callback function for LLEMU's center button.
  *
@@ -71,19 +71,19 @@ void opcontrol() {
 		                 (pros::lcd::read_buttons() & LCD_BTN_CENTER) >> 1,
 		                 (pros::lcd::read_buttons() & LCD_BTN_RIGHT) >> 0);
 
-		int rightval = (master.get_analog(ANALOG_RIGHT_Y) - master.get_analog(ANALOG_RIGHT_X)/2);
-		int leftval = (master.get_analog(ANALOG_RIGHT_Y) + master.get_analog(ANALOG_RIGHT_X)/2);
-		left1_mtr.move_velocity(-leftval);
-		left2_mtr.move_velocity(-leftval);
-		right1_mtr.move_velocity(rightval);
-		right2_mtr.move_velocity(rightval);
+		int rightval = (master.get_analog(ANALOG_LEFT_Y) - master.get_analog(ANALOG_RIGHT_X)/2);
+		int leftval = (master.get_analog(ANALOG_LEFT_Y) + master.get_analog(ANALOG_RIGHT_X)/2);
+		left1_mtr.move_velocity(leftval);
+		left2_mtr.move_velocity(leftval);
+		right1_mtr.move_velocity(-rightval);
+		right2_mtr.move_velocity(-rightval);
 
 		if (master.get_digital(DIGITAL_R1)){
-			if (lift_mtr.get_position()<600){
+			if (lift_mtr.get_position()<800){
 				lift_mtr.move_velocity(70);
 			}
 			else{
-				lift_mtr.move_velocity(0);
+				lift_mtr.brake();
 			}
 		}
 		else if (master.get_digital(DIGITAL_R2)){
@@ -91,7 +91,7 @@ void opcontrol() {
 				lift_mtr.move_velocity(-50);
 			}
 			else{
-				lift_mtr.move_velocity(0);
+				lift_mtr.brake();
 			}
 		}
 
@@ -100,11 +100,11 @@ void opcontrol() {
 		}
 //////////////////////////////////////////////////////////////
 		if (master.get_digital(DIGITAL_L1)){
-			if (claw_mtr.get_position()<180){
+			if (claw_mtr.get_position()<400){
 				claw_mtr.move_velocity(70);
 			}
 			else{
-				claw_mtr.move_velocity(0);
+				claw_mtr.brake();
 			}
 		}
 		else if (master.get_digital(DIGITAL_L2)){
@@ -112,11 +112,17 @@ void opcontrol() {
 				claw_mtr.move_velocity(-50);
 			}
 			else{
-				claw_mtr.move_velocity(0);
+				claw_mtr.brake();
 			}
 		}
 		else{
-			claw_mtr.move_velocity(0);
+			claw_mtr.brake();
+		}
+
+
+
+		if (master.get_digital(DIGITAL_A)){
+			autonomous();
 		}
 
 		
