@@ -102,6 +102,7 @@ void opcontrol() {
 		else{
 			lift_mtr.move_velocity(0);
 		}
+
 //////////////////////////////////////////////////////////////
 			if (master.get_digital(DIGITAL_L2)){
 				claw_mtr.move_absolute(90,100);
