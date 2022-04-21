@@ -79,7 +79,7 @@ void opcontrol() {
 		right2_mtr.move_velocity(rightval);
 
 		if (master.get_digital(DIGITAL_R1)){
-			if (lift_mtr.get_position()<500){
+			if (lift_mtr.get_position()<600){
 				lift_mtr.move_velocity(70);
 			}
 			else{
