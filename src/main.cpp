@@ -83,7 +83,7 @@ void opcontrol() {
 		
 
 		if (master.get_digital(DIGITAL_R1)){
-			if (lift_mtr.get_position()<800){
+			if (lift_mtr.get_position()<850){
 				lift_mtr.move_velocity(70);
 			}
 			else{
@@ -91,7 +91,7 @@ void opcontrol() {
 			}
 		}
 		else if (master.get_digital(DIGITAL_R2)){
-			if (lift_mtr.get_position()>20){
+			if (lift_mtr.get_position()>15){
 				lift_mtr.move_velocity(-50);
 			}
 			else{
