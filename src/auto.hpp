@@ -10,10 +10,10 @@ void movefwd(double mat){
     mat = mat*matSize/(circumfrence);
     mat = mat*(2.0/3);
 
-    right1_mtr.move_relative(mat,10);
-    right2_mtr.move_relative(mat,10);
-    left1_mtr.move_relative(-mat,10);
-    left2_mtr.move_relative(-mat,10);
+    right1_mtr.move_relative(mat,100);
+    right2_mtr.move_relative(mat,100);
+    left1_mtr.move_relative(-mat,100);
+    left2_mtr.move_relative(-mat,100);
 }
 
 void movebk(double mat){
