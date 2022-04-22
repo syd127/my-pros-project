@@ -2,12 +2,8 @@
 #include "isetting.hpp"
 #include "cmath"
 
-
 const double circumfrence = 4*3.14159265;
 const double matSize = 23.4166;
-
-
-
 
 void movefwd(double mat){
 
@@ -87,6 +83,10 @@ void clawmove(double clmun){
     }
 
 }
+
+
+
+
 /**n
  * 
  * Runs the user autonomous code. This function will be started in its own task
@@ -127,6 +127,7 @@ void autonomous1() {
     movefwd(2);// three
     pros::delay(3000);
 }
+
 void autonomous2(){
     right1_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
     right2_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
@@ -179,7 +180,6 @@ void autonomous2(){
     pros::delay(3000);
 
 }
-
 
 void autonomous3(){// bad
     right1_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
