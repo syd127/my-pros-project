@@ -20,9 +20,11 @@ void setup(){
 	lift_mtr.tare_position();
 	claw_mtr.tare_position();
 
-	claw_mtr.set_encoder_units(MOTOR_ENCODER_DEGREES);
-	lift_mtr.set_encoder_units(MOTOR_ENCODER_DEGREES);
 	claw_mtr.move_absolute(175,100);
+	lift_mtr.move_relative(40, 70);
+    while (!((lift_mtr.get_position() < 35) && (lift_mtr.get_position() > 40))) {
+		pros::delay(2);
+	}
 
 	
 }

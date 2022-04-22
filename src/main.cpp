@@ -77,20 +77,9 @@ void opcontrol() {
 		right1_mtr.move_velocity(-rightval);
 		right2_mtr.move_velocity(-rightval);
 
-		// reset lift when not down limit 
-		if (master.get_digital(DIGITAL_UP)){
-			lift_mtr.tare_position();
-			lift_mtr.move_absolute(-750,100);
-
- 			while (!((lift_mtr.get_position() < -745) && (lift_mtr.get_position() > -755))) {
-   				pros::delay(2);
-  			}
-		}
-
-		
 		// lift
 		if (master.get_digital(DIGITAL_R1)){
-			if (lift_mtr.get_position()<850){
+			if (lift_mtr.get_position()<650){
 				lift_mtr.move_velocity(70);
 			}
 			else{
@@ -99,7 +88,7 @@ void opcontrol() {
 		}
 		else if (master.get_digital(DIGITAL_R2)){
 			if (lift_mtr.get_position()>15){
-				lift_mtr.move_velocity(-50);
+				lift_mtr.move_velocity(-70);
 			}
 			else{
 				lift_mtr.brake();
