@@ -127,6 +127,11 @@ void opcontrol() {
 			autonomous2();
 		}
 
+		if (master.get_digital(DIGITAL_DOWN) && master.get_digital(DIGITAL_RIGHT)){
+			autonomous3();
+		}
+		
+
 
 		
 		

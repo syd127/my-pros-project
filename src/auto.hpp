@@ -32,7 +32,7 @@ void movebk(double mat){
     left1_mtr.move_relative(mat,100);
     left2_mtr.move_relative(mat,100);
 
-
+}
 void turnleft(double m){
     
     right1_mtr.move_relative(m,70);
@@ -50,23 +50,23 @@ void turnright(double m){
 }
 
 
-void clawmove(int num){
+void liftmove(int num){
     if (num == 1){
-        claw_mtr.move_relative(44, 70);
-        while (!((claw_mtr.get_position() < 40) && (claw_mtr.get_position() > 47))) {
+        lift_mtr.move_relative(44, 70);
+        while (!((lift_mtr.get_position() < 40) && (lift_mtr.get_position() > 47))) {
             pros::delay(2);
         }
     }
     else if (num == 2){
 
-        claw_mtr.move_relative(70, 70);
-        while (!((claw_mtr.get_position() < 65) && (claw_mtr.get_position() > 75))) {
+        lift_mtr.move_relative(70, 70);
+        while (!((lift_mtr.get_position() < 65) && (lift_mtr.get_position() > 75))) {
             pros::delay(2);
         }
     }
     else if (num == 3){
-        claw_mtr.move_relative(595, 70);
-        while (!((claw_mtr.get_position() < 590) && (claw_mtr.get_position() >600))) {
+        lift_mtr.move_relative(595, 70);
+        while (!((lift_mtr.get_position() < 590) && (lift_mtr.get_position() >600))) {
             pros::delay(2);
         }
     }
@@ -112,25 +112,60 @@ void autonomous1() {
     movefwd(2);// three
     pros::delay(3000);
 }
-
 void autonomous2(){
     right1_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
     right2_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
     left1_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
     left2_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
 
-    claw_mtr.set_encoder_units(MOTOR_ENCODER_DEGREES);
+    lift_mtr.set_encoder_units(MOTOR_ENCODER_DEGREES);
     lift_mtr.tare_position();
-    
 
-    movefwd(3);// one
+    movefwd(4);// one
+    pros::delay(3000);
+    turnright(0.62);
+    pros::delay(3000);
+    movefwd(5.5);
     pros::delay(3000);
 
+}
 
 
+void autonomous3(){// bad
+    right1_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
+    right2_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
+    left1_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
+    left2_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
 
-
-
+    lift_mtr.set_encoder_units(MOTOR_ENCODER_DEGREES);
+    lift_mtr.tare_position();
+    
+    liftmove(1);
+    movefwd(4);// red one
+    pros::delay(3000);
+    movebk(0.2);
+    pros::delay(3000);
+    turnright(0.62);
+    pros::delay(3000);
+    movefwd(1);
+    pros::delay(3000);
+    turnleft(0.62);
+    pros::delay(3000);
+    movefwd(2.5);// y1
+    pros::delay(3000);
+    turnright(0.62);
+    pros::delay(3000);
+    movefwd(1.5);
+    pros::delay(3000);
+    turnright(0.62);
+    pros::delay(3000);
+    movefwd(2.5);//y2
+    pros::delay(3000);
+    turnleft(0.62);
+    pros::delay(3000);
+    movefwd(1); 
+    pros::delay(3000);
+    pros::delay(3000);
 
 }
 
