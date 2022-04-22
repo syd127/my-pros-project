@@ -14,13 +14,11 @@ void movefwd(double mat){
     mat = mat*matSize/(circumfrence);
     mat = mat*(2.0/3);
 
-    right1_mtr.move_relative(mat,100);
-    right2_mtr.move_relative(mat,100);
-    left1_mtr.move_relative(-mat,100);
-    left2_mtr.move_relative(-mat,100);
-
+    right1_mtr.move_relative(mat,10);
+    right2_mtr.move_relative(mat,10);
+    left1_mtr.move_relative(-mat,10);
+    left2_mtr.move_relative(-mat,10);
 }
-
 
 void movebk(double mat){
 
@@ -33,6 +31,7 @@ void movebk(double mat){
     left2_mtr.move_relative(mat,100);
 
 }
+
 void turnleft(double m){
     
     right1_mtr.move_relative(m,70);
@@ -41,7 +40,6 @@ void turnleft(double m){
     left2_mtr.move_relative(m,70);
 }
 
-
 void turnright(double m){
     right1_mtr.move_relative(-m,70);
     right2_mtr.move_relative(-m,70);
@@ -49,28 +47,45 @@ void turnright(double m){
     left2_mtr.move_relative(-m,70);
 }
 
-
 void liftmove(double num){
+
     if (num == 1){
         lift_mtr.move_relative(44, 70);
-        while (!((lift_mtr.get_position() < 40) && (lift_mtr.get_position() > 47))) {
+        while (!((lift_mtr.get_position() > 40) && (lift_mtr.get_position() < 47))) {
             pros::delay(2);
         }
     }
     else if (num == 2){
 
         lift_mtr.move_relative(70, 70);
-        while (!((lift_mtr.get_position() < 65) && (lift_mtr.get_position() > 75))) {
+        while (!((lift_mtr.get_position() > 65) && (lift_mtr.get_position() < 75))) {
             pros::delay(2);
         }
     }
     else if (num == 3){
         lift_mtr.move_relative(595, 70);
-        while (!((lift_mtr.get_position() < 590) && (lift_mtr.get_position() >600))) {
+        while (!((lift_mtr.get_position() > 590) && (lift_mtr.get_position() < 600))) {
             pros::delay(2);
         }
     }
     
+}
+
+void clawmove(double clmun){
+
+    if (clmun == 1){// down
+        claw_mtr.move_relative(40,70);
+        while (!((claw_mtr.get_position() > 35) && (claw_mtr.get_position() < 45))) {
+            pros::delay(2);
+        }
+    }
+    else if (clmun == 0){
+        claw_mtr.move_relative(175,70);
+        while (!((claw_mtr.get_position() > 170) && (claw_mtr.get_position() < 180))) {
+            pros::delay(2);
+        }
+    }
+
 }
 /**n
  * 
@@ -121,11 +136,46 @@ void autonomous2(){
     lift_mtr.set_encoder_units(MOTOR_ENCODER_DEGREES);
     lift_mtr.tare_position();
 
-    movefwd(4);// one
+    claw_mtr.set_encoder_units(MOTOR_ENCODER_DEGREES);
+    claw_mtr.tare_position();
+
+    movefwd(4);// push red
+    pros::delay(3000);
+    liftmove(1);
+    pros::delay(3000);
+    turnleft(0.62);
+    pros::delay(3000);
+    movebk(5.5);
+    pros::delay(3000);
+    clawmove(1);
+    pros::delay(3000);
+    liftmove(2);// get blue
+    pros::delay(3000);
+    movefwd(1);
     pros::delay(3000);
     turnright(0.62);
     pros::delay(3000);
-    movefwd(5.5);
+    movefwd(3);// push up yellow
+    pros::delay(3000);
+    turnleft(0.62);
+    pros::delay(3000);
+    clawmove(0);
+    pros::delay(3000);
+    liftmove(1);// put blue
+    pros::delay(3000);
+    movefwd(1.5);
+    pros::delay(3000);
+    turnleft(0.62);
+    pros::delay(3000);
+    movefwd(2);// push tall
+    pros::delay(3000);
+    turnright(0.62);
+    pros::delay(3000);
+    movefwd(1.5);
+    pros::delay(3000);
+    turnright(0.62);
+    pros::delay(3000);
+    movefwd(3);// push close
     pros::delay(3000);
 
 }
