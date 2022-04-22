@@ -64,9 +64,6 @@ void competition_initialize() {}
  */
 void opcontrol() {
 	setup();
-	claw_mtr.set_encoder_units(MOTOR_ENCODER_DEGREES);
-	claw_mtr.move_absolute(175,100);
-
 
 	while (true) {
 		pros::lcd::print(0, "%d %d %d", (pros::lcd::read_buttons() & LCD_BTN_LEFT) >> 2,
@@ -80,8 +77,18 @@ void opcontrol() {
 		right1_mtr.move_velocity(-rightval);
 		right2_mtr.move_velocity(-rightval);
 
-		
+		// reset lift when not down limit 
+		if (master.get_digital(DIGITAL_UP)){
+			lift_mtr.tare_position();
+			lift_mtr.move_absolute(-750,100);
 
+ 			while (!((lift_mtr.get_position() < -745) && (lift_mtr.get_position() > -755))) {
+   				pros::delay(2);
+  			}
+		}
+
+		
+		// lift
 		if (master.get_digital(DIGITAL_R1)){
 			if (lift_mtr.get_position()<850){
 				lift_mtr.move_velocity(70);
@@ -103,47 +110,25 @@ void opcontrol() {
 			lift_mtr.move_velocity(0);
 		}
 
-//////////////////////////////////////////////////////////////
-			if (master.get_digital(DIGITAL_L2)){
-				claw_mtr.move_absolute(30,100);
-			}
-			else if (master.get_digital(DIGITAL_L1)){
-				claw_mtr.move_absolute(175,100);
-			}
-		// if (master.get_digital(DIGITAL_L1)){
-		// 	if (claw_mtr.get_position()<160){
-		// 		claw_mtr.move_velocity(70);
-		// 	}
-		// 	else{
-		// 		claw_mtr.brake();
-		// 	}
-		// }
-		// else if (master.get_digital(DIGITAL_L2)){
-		// 	if (claw_mtr.get_position()>10){
-		// 		claw_mtr.move_velocity(-50);
-		// 	}
-		// 	else{
-		// 		claw_mtr.brake();
-		// 	}
-		// }
-		// else{
-		// 	claw_mtr.brake();
-		// }
+		/// claw
+		if (master.get_digital(DIGITAL_L2)){
+			claw_mtr.move_absolute(30,100);
+		}
+		else if (master.get_digital(DIGITAL_L1)){
+			claw_mtr.move_absolute(175,100);
+		}
 
-
-
+		/// auton ask 
 		if (master.get_digital(DIGITAL_A) && master.get_digital(DIGITAL_B)){
 			autonomous1();
 		}
-
-
 
 		if (master.get_digital(DIGITAL_DOWN) && master.get_digital(DIGITAL_LEFT)){
 			autonomous2();
 		}
 
-		
 
+		
 		
 		
 		pros::delay(20);

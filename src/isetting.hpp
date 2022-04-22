@@ -16,6 +16,13 @@ void setup(){
 	right1_mtr.set_brake_mode(MOTOR_BRAKE_HOLD);
 	right2_mtr.set_brake_mode(MOTOR_BRAKE_HOLD);
 	claw_mtr.set_brake_mode(MOTOR_BRAKE_HOLD);
+
 	lift_mtr.tare_position();
 	claw_mtr.tare_position();
+
+	claw_mtr.set_encoder_units(MOTOR_ENCODER_DEGREES);
+	lift_mtr.set_encoder_units(MOTOR_ENCODER_DEGREES);
+	claw_mtr.move_absolute(175,100);
+
+	
 }
