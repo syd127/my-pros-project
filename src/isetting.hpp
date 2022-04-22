@@ -11,18 +11,22 @@
 
 void setup(){
 	lift_mtr.set_brake_mode(MOTOR_BRAKE_HOLD);
+	claw_mtr.set_brake_mode(MOTOR_BRAKE_HOLD);
+
+
 	left1_mtr.set_brake_mode(MOTOR_BRAKE_HOLD);
 	left2_mtr.set_brake_mode(MOTOR_BRAKE_HOLD);
 	right1_mtr.set_brake_mode(MOTOR_BRAKE_HOLD);
 	right2_mtr.set_brake_mode(MOTOR_BRAKE_HOLD);
-	claw_mtr.set_brake_mode(MOTOR_BRAKE_HOLD);
+
 
 	lift_mtr.tare_position();
 	claw_mtr.tare_position();
 
 	claw_mtr.move_absolute(175,100);
 	lift_mtr.move_relative(40, 70);
-    while (!((lift_mtr.get_position() < 35) && (lift_mtr.get_position() > 40))) {
+	
+	while (!((lift_mtr.get_position() > 35) && (lift_mtr.get_position() < 40))) {
 		pros::delay(2);
 	}
 

@@ -50,7 +50,7 @@ void turnright(double m){
 }
 
 
-void liftmove(int num){
+void liftmove(double num){
     if (num == 1){
         lift_mtr.move_relative(44, 70);
         while (!((lift_mtr.get_position() < 40) && (lift_mtr.get_position() > 47))) {
