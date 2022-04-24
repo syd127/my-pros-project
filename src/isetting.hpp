@@ -24,9 +24,9 @@ void setup(){
 	claw_mtr.tare_position();
 
 	claw_mtr.move_absolute(175,100);
-	while (!((claw_mtr.get_position() > 170) && (claw_mtr.get_position() < 180))) {
-		pros::delay(2);
-	}
+	// while (!((claw_mtr.get_position() > 170) && (claw_mtr.get_position() < 180))) {
+	// 	pros::delay(2);
+	// }
 	lift_mtr.move_relative(40, 70);
 	
 	while (!((lift_mtr.get_position() > 35) && (lift_mtr.get_position() < 40))) {

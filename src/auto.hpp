@@ -46,20 +46,20 @@ void turnright(double m){
 void liftmove(double num){
 
     if (num == 1){
-        lift_mtr.move_relative(44, 70);
+        lift_mtr.move_absolute(44, 70);
         while (!((lift_mtr.get_position() > 40) && (lift_mtr.get_position() < 47))) {
             pros::delay(2);
         }
     }
     else if (num == 2){
 
-        lift_mtr.move_relative(70, 70);
+        lift_mtr.move_absolute(70, 70);
         while (!((lift_mtr.get_position() > 65) && (lift_mtr.get_position() < 75))) {
             pros::delay(2);
         }
     }
     else if (num == 3){
-        lift_mtr.move_relative(595, 70);
+        lift_mtr.move_absolute(595, 70);
         while (!((lift_mtr.get_position() > 590) && (lift_mtr.get_position() < 600))) {
             pros::delay(2);
         }
@@ -70,13 +70,13 @@ void liftmove(double num){
 void clawmove(double clmun){
 
     if (clmun == 1){// down
-        claw_mtr.move_relative(40,70);
+        claw_mtr.move_absolute(40,70);
         while (!((claw_mtr.get_position() > 35) && (claw_mtr.get_position() < 45))) {
             pros::delay(2);
         }
     }
     else if (clmun == 0){
-        claw_mtr.move_relative(175,70);
+        claw_mtr.move_absolute(175,70);
         while (!((claw_mtr.get_position() > 170) && (claw_mtr.get_position() < 180))) {
             pros::delay(2);
         }
@@ -138,7 +138,6 @@ void autonomous2(){
     lift_mtr.tare_position();
 
     claw_mtr.set_encoder_units(MOTOR_ENCODER_DEGREES);
-    claw_mtr.tare_position();
 
     movefwd(4);// push red
     pros::delay(3000);
@@ -146,7 +145,7 @@ void autonomous2(){
     pros::delay(3000);
     turnleft(0.62);
     pros::delay(3000);
-    movebk(5.5);
+    movebk(5);
     pros::delay(3000);
     clawmove(1);
     pros::delay(3000);
