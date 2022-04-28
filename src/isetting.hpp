@@ -6,7 +6,7 @@
 	pros::Motor right2_mtr(10);
 	pros::Motor left2_mtr(20);
 	pros::Motor lift_mtr(4, pros::E_MOTOR_GEARSET_36, 0, pros::E_MOTOR_ENCODER_DEGREES);
-	pros::Motor claw_mtr(2, pros::E_MOTOR_GEARSET_18, 0, pros::E_MOTOR_ENCODER_DEGREES);
+	pros::Motor claw_mtr(2, pros::E_MOTOR_GEARSET_36, 0, pros::E_MOTOR_ENCODER_DEGREES);
 
 
 void setup(){
@@ -27,7 +27,7 @@ void setup(){
 	// while (!((claw_mtr.get_position() > 170) && (claw_mtr.get_position() < 180))) {
 	// 	pros::delay(2);
 	// }
-	lift_mtr.move_relative(40, 70);
+	lift_mtr.move_absolute(40, 100);
 	
 	while (!((lift_mtr.get_position() > 35) && (lift_mtr.get_position() < 40))) {
 		pros::delay(2);

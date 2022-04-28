@@ -34,6 +34,8 @@ void turnleft(double m){
     right2_mtr.move_relative(m,70);
     left1_mtr.move_relative(m,70);
     left2_mtr.move_relative(m,70);
+    
+    
 }
 
 void turnright(double m){
@@ -41,6 +43,7 @@ void turnright(double m){
     right2_mtr.move_relative(-m,70);
     left1_mtr.move_relative(-m,70);
     left2_mtr.move_relative(-m,70);
+    
 }
 
 void liftmove(double num){
