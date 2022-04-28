@@ -193,36 +193,78 @@ void autonomous3(){// bad
     left1_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
     left2_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
 
-    lift_mtr.set_encoder_units(MOTOR_ENCODER_DEGREES);
-    lift_mtr.tare_position();
-    
-    liftmove(1);
-    movefwd(4);// red one
+    movefwd(4);// red
     pros::delay(3000);
-    movebk(0.2);
-    pros::delay(3000);
-    turnright(0.62);
+    turnright(0.63);
     pros::delay(3000);
     movefwd(1);
     pros::delay(3000);
-    turnleft(0.62);
-    pros::delay(3000);
-    movefwd(2.5);// y1
-    pros::delay(3000);
     turnright(0.62);
+    pros::delay(3000);
+    movefwd(2.5);//one
+    pros::delay(3000);
+    turnleft(0.62);
     pros::delay(3000);
     movefwd(1.5);
+    pros::delay(3000); 
+    turnleft(0.63);
+    pros::delay(3000);
+    movefwd(2);// two
     pros::delay(3000);
     turnright(0.62);
     pros::delay(3000);
-    movefwd(2.5);//y2
+    movefwd(1.1);
+    pros::delay(3000);
+    turnright(0.63);
+    pros::delay(3000);
+    movefwd(3);//three
+    pros::delay(3000);
+    
+
+
+}
+
+void autonomous4(){// bad
+    right1_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
+    right2_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
+    left1_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
+    left2_mtr.set_encoder_units(MOTOR_ENCODER_ROTATIONS);
+
+    movefwd(4);// red
+    pros::delay(3000);
+    turnright(0.63);
+    pros::delay(3000);
+    movefwd(1);
+    pros::delay(3000);
+    turnright(0.62);
+    pros::delay(3000);
+    movefwd(2.5);//one
     pros::delay(3000);
     turnleft(0.62);
     pros::delay(3000);
-    movefwd(1); 
+    movefwd(1.5);
+    pros::delay(3000); 
+    turnleft(0.63);
     pros::delay(3000);
+    movefwd(2);// two
+    pros::delay(3000);
+    turnright(0.62);
+    pros::delay(3000);
+    movefwd(3);
+    pros::delay(3000);
+    clawmove(1);
+    pros::delay(1000);
+    liftmove(2);
+    pros::delay(1000);
+    movebk(1);
+    pros::delay(2000); 
+    turnleft(0.63);
+    pros::delay(3000);
+    movefwd(3);//three
     pros::delay(3000);
 
+
+    
 }
 
 

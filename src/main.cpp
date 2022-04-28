@@ -80,7 +80,7 @@ void opcontrol() {
 		// lift
 		if (master.get_digital(DIGITAL_R1)){
 			if (lift_mtr.get_position()<650){
-				lift_mtr.move_velocity(70);
+				lift_mtr.move_velocity(100);
 			}
 			else{
 				lift_mtr.brake();
@@ -88,7 +88,7 @@ void opcontrol() {
 		}
 		else if (master.get_digital(DIGITAL_R2)){
 			if (lift_mtr.get_position()>45){
-				lift_mtr.move_velocity(-70);
+				lift_mtr.move_velocity(-100);
 			}
 			else{
 				lift_mtr.brake();
@@ -104,7 +104,7 @@ void opcontrol() {
 			claw_mtr.move_absolute(30,100);
 		}
 		else if (master.get_digital(DIGITAL_L1)){
-			claw_mtr.move_absolute(175,100);
+			claw_mtr.move_absolute(180,100);
 		}
 
 		/// auton ask 
@@ -119,6 +119,11 @@ void opcontrol() {
 		if (master.get_digital(DIGITAL_DOWN) && master.get_digital(DIGITAL_RIGHT)){
 			autonomous3();
 		}
+
+		if (master.get_digital(DIGITAL_X) && master.get_digital(DIGITAL_Y)){
+			autonomous4();
+		}
+		
 		
 
 
