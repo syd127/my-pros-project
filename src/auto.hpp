@@ -68,6 +68,7 @@ void liftmove(double num){
 }
 
 void clawmove(double clmun){
+	std::cout << "==1" << std::endl;
 
     if (clmun == 1){// down
         claw_mtr.move_absolute(40,70);
@@ -75,12 +76,15 @@ void clawmove(double clmun){
             pros::delay(2);
         }
     }
+
     else if (clmun == 0){
         claw_mtr.move_absolute(175,70);
         while (!((claw_mtr.get_position() > 170) && (claw_mtr.get_position() < 180))) {
             pros::delay(2);
         }
     }
+
+	std::cout << "==2" << std::endl;
 
 }
 
